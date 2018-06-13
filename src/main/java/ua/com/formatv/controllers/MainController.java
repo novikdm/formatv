@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ua.com.formatv.entity.Customer;
-import ua.com.formatv.service.CustomerService;
+import ua.com.formatv.service.customer.CustomerService;
 
 import java.security.Principal;
 

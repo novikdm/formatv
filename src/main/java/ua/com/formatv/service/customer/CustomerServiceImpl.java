@@ -1,4 +1,4 @@
-package ua.com.formatv.service;
+package ua.com.formatv.service.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

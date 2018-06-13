@@ -12,53 +12,64 @@ import java.util.List;
 @Entity
 public class Customer implements UserDetails {
 
-
-    public Customer() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true)
     private String username;
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private FormaTRole role=FormaTRole.ROLE_USER;
+    private boolean accNonExp = true;
+    private boolean accNonLock = true;
+    private boolean credNonExp = true;
+    private boolean enable = true;
+
+    @OneToOne(
+            mappedBy = "customer",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private CustomerDetails customerDetails;
+
+
+    public Customer() {
+    }
+
+
     public String getUsername() {
         return username;
     }
 
-    private String password;
     public String getPassword() {
         return password;
     }
 
-    @Enumerated(EnumType.STRING)
-    private FormaTRole role=FormaTRole.ROLE_USER;
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority(role.name()));
         return authorities;
     }
 
-    private boolean accNonExp = true;
     public boolean isAccountNonExpired() {
         return accNonExp;
     }
 
-    private boolean accNonLock = true;
     public boolean isAccountNonLocked() {
         return accNonLock;
     }
 
-    private boolean credNonExp = true;
     public boolean isCredentialsNonExpired() {
         return credNonExp;
     }
 
-    private boolean enable = true;
     public boolean isEnabled() {
         return enable;
     }
+
+    public CustomerDetails getCustomerDetails() { return customerDetails; }
 
     public void setUsername(String username) {
         this.username = username;
@@ -88,5 +99,5 @@ public class Customer implements UserDetails {
         this.enable = enable;
     }
 
-
+    public void setCustomerDetails(CustomerDetails customerDetails) { this.customerDetails = customerDetails; }
 }

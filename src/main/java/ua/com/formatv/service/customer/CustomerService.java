@@ -1,4 +1,4 @@
-package ua.com.formatv.service;
+package ua.com.formatv.service.customer;
 
 
 
