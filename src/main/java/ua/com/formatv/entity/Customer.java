@@ -28,7 +28,7 @@ public class Customer implements UserDetails {
     private boolean enable = true;
 
     @OneToOne(
-            mappedBy = "customer",
+
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )

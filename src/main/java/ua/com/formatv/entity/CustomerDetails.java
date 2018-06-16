@@ -14,6 +14,7 @@ public class CustomerDetails {
     private String avatar;
 
     @OneToOne(
+            mappedBy = "customerDetails",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
