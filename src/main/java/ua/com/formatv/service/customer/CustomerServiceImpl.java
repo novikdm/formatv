@@ -20,9 +20,14 @@ public class CustomerServiceImpl implements CustomerService{
         customerDAO.save(customer);
     }
 
+    public void deleteCustomer(int id) {
+        customerDAO.delete(id);
+    }
+
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return customerDAO.findCustomerByUsername(username);
     }
+
 
 
 

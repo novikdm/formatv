@@ -26,10 +26,11 @@ public class Customer implements UserDetails {
     private boolean accNonLock = true;
     private boolean credNonExp = true;
     private boolean enable = true;
+    private String activationToken = null;
 
     @OneToOne(
 
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
     private CustomerDetails customerDetails;
@@ -100,4 +101,8 @@ public class Customer implements UserDetails {
     }
 
     public void setCustomerDetails(CustomerDetails customerDetails) { this.customerDetails = customerDetails; }
+
+    public String getActivationToken() {return activationToken;}
+
+    public void setActivationToken(String activationToken) {this.activationToken = activationToken;}
 }

@@ -38,19 +38,21 @@
         </div>
     </sec:authorize>
 
-    <%--<sec:accesscontrollist hasPermission="SUPERADMIN" domainObject="customer">--%>
-        <%--access accept--%>
-    <%--</sec:accesscontrollist>--%>
-    <br>
-    Our Customer:
-    <br>
-    Model in MainController:
-    ${user.username}
-    <br>
+
     ----
     <sec:authorize access="isAuthenticated()">
+
+    
+        
+    
+        <h4>My User:</h4>
+
         name: <sec:authentication property="principal.username" />
+        <br>
         id: <sec:authentication property="principal.authorities" />
+        <br>
+        Avatar:<img src="<sec:authentication property="principal.customerDetails.avatar" />" >
+
 
 
     </sec:authorize>
