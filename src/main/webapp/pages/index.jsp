@@ -47,11 +47,13 @@
     
         <h4>My User:</h4>
 
-        name: <sec:authentication property="principal.username" />
+        email: <sec:authentication property="principal.username" />
+        <br>
+        name: <sec:authentication property="principal.customerDetails.name" />
         <br>
         id: <sec:authentication property="principal.authorities" />
         <br>
-        Avatar:<img src="<sec:authentication property="principal.customerDetails.avatar" />" >
+        Avatar:<img src="<sec:authentication property="principal.customerDetails.avatar"  />" width="100px">
 
 
 
