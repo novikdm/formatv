@@ -6,6 +6,7 @@ import ua.com.formatv.entity.Customer;
 public interface CustomerDAO extends JpaRepository<Customer, Integer> {
 
     Customer findCustomerByUsername(String username);
+    Customer findCustomerById(int id);
 
 
 }

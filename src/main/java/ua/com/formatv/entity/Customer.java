@@ -5,8 +5,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,8 +27,9 @@ public class Customer implements UserDetails {
     private boolean accNonExp = true;
     private boolean accNonLock = true;
     private boolean credNonExp = true;
-    private boolean enable = true;
-    private String activationToken = null;
+    private boolean enable = false;
+    private Timestamp timestamp;
+    private String activationLink = null;
 
     @OneToOne(
 
@@ -37,8 +40,8 @@ public class Customer implements UserDetails {
 
 
     public Customer() {
+        this.timestamp = new Timestamp(new Date().getTime());
     }
-
 
     public String getUsername() {
         return username;
@@ -102,7 +105,19 @@ public class Customer implements UserDetails {
 
     public void setCustomerDetails(CustomerDetails customerDetails) { this.customerDetails = customerDetails; }
 
-    public String getActivationToken() {return activationToken;}
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
 
-    public void setActivationToken(String activationToken) {this.activationToken = activationToken;}
+    public int getId() {
+        return id;
+    }
+
+    public String getActivationLink() {
+        return activationLink;
+    }
+
+    public void setActivationLink(String activationLink) {
+        this.activationLink = activationLink;
+    }
 }

@@ -16,6 +16,7 @@
 <div id="content">
     <h1>You are in Registration Page!</h1>
     <br>
+    <hr>
     <form action="/RegisterNewUser" method="post" class="registrationForm" enctype="multipart/form-data">
         <input type="email" name="username" placeholder="email" required>
         <input type="password" name="password" placeholder="password" required>

@@ -33,6 +33,14 @@
     <hr>
     <sec:authorize access="isAnonymous()">
         <div id="registration">
+            <form action="/logIn" method="post">
+                <input type="email" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}">
+                <input type="submit">
+            </form>
             <div class="registrationLink"><a href="/login">Sign In</a></div>
             <div class="registrationLink"><a href="/Registration">Registration</a></div>
         </div>
@@ -58,6 +66,16 @@
 
 
     </sec:authorize>
+    <hr>
+    <div>
+        <form action="/testing" method="post" enctype="multipart/form-data">
+            <input type="file" name="ava" id="">
+            <input type="submit">
+            <input type="hidden"
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
+        </form>
+        <a href="/testing">Test</a></div>
 
 
 
