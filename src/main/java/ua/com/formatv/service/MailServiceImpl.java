@@ -36,7 +36,7 @@ public class MailServiceImpl implements MailService{
         try {
             helper.setTo(customer.getUsername());
             helper.setText("<h3>Hello dear user!</h3> You are registered on service FormaTV.<br> Click to next link for activation account: <a href=\"" + linkBody + "\">Activation</a>", true);
-            helper.setFrom("novikdmitry.c.h@gmail.com");
+            helper.setFrom("dmitro.formatv@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
