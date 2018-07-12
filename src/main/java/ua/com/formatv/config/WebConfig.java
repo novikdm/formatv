@@ -37,6 +37,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/style/**").
                 addResourceLocations("/static/styles/");
 
+        registry.addResourceHandler("/script/**").
+                addResourceLocations("/static/scripts/");
+
+//        registry.addResourceHandler("/img/**").
+//                addResourceLocations("/static/images/");
+
+
+
 //      Hendler for Avatars pics
         registry.addResourceHandler("/prefixAvatar/**").
                 addResourceLocations("file:" + System.getProperty("user.home") + File.separator
