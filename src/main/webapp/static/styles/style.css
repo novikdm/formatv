@@ -1,0 +1,271 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.row {
+  width: 85%;
+  min-width: 300px;
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.relPos {
+  position: relative;
+}
+.inputDiv {
+  position: relative;
+}
+.inputDiv input[type=text],
+.inputDiv input[type=password],
+.inputDiv input[type=date] {
+  box-sizing: border-box;
+  padding: 5px 5px 5px 25px;
+  margin: 10px;
+  width: 240px;
+  border: 1px solid #9e9e9e;
+  border-radius: 3px;
+  color: #9e9e9e;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.inputDiv input[type=text]::placeholder,
+.inputDiv input[type=password]::placeholder,
+.inputDiv input[type=date]::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #9e9e9e;
+  opacity: 1;
+  /* Firefox */
+}
+.inputDiv input[type=text]:-ms-input-placeholder,
+.inputDiv input[type=password]:-ms-input-placeholder,
+.inputDiv input[type=date]:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #9e9e9e;
+}
+.inputDiv input[type=text]::-ms-input-placeholder,
+.inputDiv input[type=password]::-ms-input-placeholder,
+.inputDiv input[type=date]::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #9e9e9e;
+}
+.inputDiv input[type=text]:focus,
+.inputDiv input[type=password]:focus,
+.inputDiv input[type=date]:focus {
+  outline: none;
+  border: 1px solid #e75757;
+}
+.inputDiv i {
+  position: absolute;
+  color: #9e9e9e;
+  left: 15px;
+  top: 15px;
+}
+/*поле ввода текста с иконкой */
+.inputDivLabel i {
+  top: 7px;
+}
+.file_upload {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 10px;
+  width: 240px;
+  border: 1px solid #9e9e9e;
+  border-radius: 3px;
+  color: #9e9e9e;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.file_upload > button {
+  float: right;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  text-align: center;
+  /* example */
+  padding: 5px;
+  background: #9e9e9e;
+  color: #fff;
+}
+.file_upload > div {
+  padding-left: 1em /* example */;
+}
+@media only screen and (max-width: 500px) {
+  /* example */
+  .file_upload > div {
+    display: none;
+  }
+  .file_upload > button {
+    width: 100%;
+  }
+}
+/*input type=file*/
+.userIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: relative;
+}
+.userIcon i {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  font-size: 2em;
+}
+header {
+  background: #2d2d2d;
+}
+header .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+header .row .userIcon {
+  float: right;
+  background: #fff;
+}
+header .row .userIcon i {
+  color: #e75757;
+}
+header .row .userIcon .avtorization-hide {
+  display: none;
+  padding: 6px 9px;
+}
+header .row .userIcon .avtorization-hide a {
+  font-size: 0.9em;
+  display: block;
+  margin: 5px;
+  color: #9e9e9e;
+}
+header .row .userIcon .avtorization-hide a:hover {
+  color: #e75757;
+}
+header .row .userIcon:hover {
+  width: 150px;
+  border-bottom-left-radius: 20% 50%;
+  border-bottom-right-radius: 20% 50%;
+  border-top-left-radius: 20% 50%;
+  border-top-right-radius: 20% 50%;
+}
+header .row .userIcon:hover .avtorization-hide {
+  display: block;
+}
+.main-block {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+.main-block .nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 275px);
+  grid-gap: 30px;
+}
+.main-block .nav .nav-block {
+  position: relative;
+}
+.main-block .nav .nav-block .title-text {
+  color: #ffffff;
+  font-size: 20px;
+  position: absolute;
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+}
+.main-block .nav .nav-block:nth-child(1) {
+  background: url("img/big-bow-tie.png") no-repeat center center #8d8d8d;
+  background-size: 40%;
+}
+.main-block .nav .nav-block:nth-child(2) {
+  background: url("img/big-mustache.png") no-repeat center center #8d8d8d;
+  background-size: 40%;
+}
+.main-block .nav .nav-block:nth-child(3) {
+  background: url("img/bow-tie.png") no-repeat center center #8d8d8d;
+  background-size: 40%;
+}
+.main-block .nav .nav-block:nth-child(4) {
+  background: url("img/glasses.png") no-repeat center center #8d8d8d;
+  background-size: 40%;
+}
+footer {
+  background: #2d2d2d;
+  height: 80px;
+}
+.modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  /* кнопка закрытия блока */
+}
+.modal .userIcon {
+  margin: 0 auto;
+  background: #9e9e9e;
+}
+.modal .userIcon i {
+  color: #ffffff;
+}
+.modal .log-in {
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+}
+.modal .log-up {
+  width: 300px;
+  height: 600px;
+  margin: -300px 0 0 -150px;
+}
+.modal .log-in,
+.modal .log-up {
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 3px;
+  box-shadow: 0 0 15px #000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.modal .log-in .exit-icon,
+.modal .log-up .exit-icon {
+  position: absolute;
+  right: 5px;
+  top: 1px;
+  color: #9e9e9e;
+  font-size: 1.5em;
+}
+.modal .log-in .exit-icon:hover,
+.modal .log-up .exit-icon:hover {
+  color: #e75757;
+}
+.modal .log-in form,
+.modal .log-up form {
+  margin: 20px 0;
+  width: 100%;
+}
+.modal .log-in form p,
+.modal .log-up form p {
+  text-align: center;
+}
+.modal .log-in form .btn-log,
+.modal .log-up form .btn-log {
+  background: #e75757;
+  color: #ffffff;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  border-radius: 3px;
+  margin: 20px;
+}
+.modal .log-in form .btn-log:hover,
+.modal .log-up form .btn-log:hover {
+  background: #b43636;
+}
+/* блоки регистрации и входа на сайт */
