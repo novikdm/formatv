@@ -65,7 +65,7 @@ public class MainController {
     @GetMapping("/testing")
     public String testing(@RequestParam("ava")MultipartFile file) throws IOException {
         Customer customer = customerDAO.findCustomerById(33);
-
+        System.out.println("test");
         return "redirect;/";
 
     }
