@@ -1,11 +1,13 @@
 package ua.com.formatv.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -28,6 +30,7 @@ public class Customer implements UserDetails {
     private boolean accNonLock = true;
     private boolean credNonExp = true;
     private boolean enable = false;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Timestamp timestamp;
     private String activationLink = null;
 

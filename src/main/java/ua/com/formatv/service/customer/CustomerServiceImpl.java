@@ -41,6 +41,7 @@ public class CustomerServiceImpl implements CustomerService{
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] linkArray = digest.digest(linkText.getBytes(StandardCharsets.UTF_8));
         String linkURL = "";
+        System.out.println("Timastemp in mailSend: " + customer.getTimestamp());
         for (byte c:
                 linkArray) {
             linkURL+= c;

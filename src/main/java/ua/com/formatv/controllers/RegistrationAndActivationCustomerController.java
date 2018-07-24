@@ -68,6 +68,7 @@ public class RegistrationAndActivationCustomerController {
             e.printStackTrace();
         }
         customerService.save(customer);
+        System.out.println("TimeStamp in RegisterNewUser: " + customer.getTimestamp());
         try {
             mailService.sendActivationEmail(customer);
         }
@@ -89,6 +90,7 @@ public class RegistrationAndActivationCustomerController {
             customerDAO.save(customer);
         }
         else System.out.println("SOMTHING BAD in activation Accaunt");
+        System.out.println("Timestamp in activation: " + customer.getTimestamp());
 
 
         return "redirect:/";

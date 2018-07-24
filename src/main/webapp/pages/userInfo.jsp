@@ -3,21 +3,26 @@
 <%--
   Created by IntelliJ IDEA.
   User: Casper
-  Date: 09.06.2018
-  Time: 15:49
+  Date: 24.07.2018
+  Time: 20:17
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>FormaTV</title>
+    <title>User details</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/script/script.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/style/style.css">
 </head>
 <body>
+<script>
+    <c:if test="${message != null}">
+        alert(${message});
+    </c:if>
+</script>
 <header>
     <div class="row">
         <div class="logo">Logo</div>
@@ -35,10 +40,10 @@
         <div class="relPos">
             <div class="userIcon">
                 <sec:authorize access="isAnonymous()">
-                <div class="avtorization-hide">
+                    <div class="avtorization-hide">
                         <a class="log-in-button" href="#">Вход</a>
                         <a class="log-up-button" href="#">Регистрация</a>
-                </div>
+                    </div>
                 </sec:authorize>
                 <sec:authorize access="isAnonymous()">
                     <i class="fas fa-user"></i>
@@ -54,8 +59,8 @@
                     <form action="/logout" method="post">
                         <input type="submit" value="Logout">
                         <input type="hidden"
-                           name="${_csrf.parameterName}"
-                           value="${_csrf.token}">
+                               name="${_csrf.parameterName}"
+                               value="${_csrf.token}">
                     </form>
                 </sec:authorize>
             </div>
@@ -65,18 +70,42 @@
 <div class="main-block">
     <div class="row">
         <div class="nav">
-            <div class="nav-block">
-                <h2 class="title-text">Фильмы</h2>
+            <%--Start Content--%>
+            <div>
+                <hr>
+                    Avatarka
+                <img src="${user.customerDetails.avatar}" width="200px" height="200px">
+                <hr>
+                    Reiting
+                <br>
+                    Ocenka
+                <br>
+                <hr>
+                    Ocenki
+                <hr>
+                    Recenzii
+                <hr>
+                <sec:authorize access="isAuthenticated()">
+                    <sec:authentication property="principal.id" var="principalId"/>
+                    <c:if test="${userID == principalId}">
+                        <h4>Navigation</h4>
+                        <div>
+                                <form action="/changePassword" method="post">
+                                    <input type="password" name="oldPassword" placeholder="OLD PASSWORD">
+                                    <input type="password" name="newPassword" placeholder="NEW PASSWORD">
+                                    <input type="hidden" name="userId" value="${principalId}">
+                                    <input type="hidden"
+                                           name="${_csrf.parameterName}"
+                                           value="${_csrf.token}">
+                                    <input type="submit">
+                            </form>
+                        </div>
+                    </c:if>
+                </sec:authorize>
+                <hr>
+                    Admin Navigation
             </div>
-            <div class="nav-block">
-                <h2 class="title-text">Сериалы</h2>
-            </div>
-            <div class="nav-block">
-                <h2 class="title-text">Люди</h2>
-            </div>
-            <div class="nav-block">
-                <h2 class="title-text">Рейтенги</h2>
-            </div>
+            <%--End Content--%>
         </div>
         <div class="sidebar">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur officiis ut rem minus. Odio quae quos velit assumenda voluptatem perspiciatis nihil quia fugit porro ullam sunt, dolorum dolore similique in!
@@ -128,10 +157,7 @@
                 <input type="password" name="password" placeholder="Password">
                 <i class="fas fa-lock"></i>
             </div>
-            <%--<div class="inputDiv">--%>
-                <%--<input type="password" name="password-repeat-input" placeholder="repeat Password">--%>
-                <%--<i class="fas fa-lock"></i>--%>
-            <%--</div>--%>
+
             <div class="inputDiv">
                 <input type="text" name="name" placeholder="Name">
                 <i class="far fa-envelope"></i>
@@ -141,14 +167,9 @@
                 <i class="fas fa-birthday-cake"></i>
             </div>
             <div class="inputDiv">
-                <!-- 			inputDivLabel	    <label class="file_upload">
-                                        <span class="button">Выбрать</span>
-                                        <mark>Файл не выбран</mark>
-                                        <input type="file" accept="image/*,image/jpeg,image/png">
-                                    </label> -->
+
                 <div class="file_upload">
-                    <%--<button type="button">Выбрать</button>--%>
-                    <%--<div>Файл не выбран</div>--%>
+
                     <input type="file" name="avatarpic" accept="image/*,image/jpeg,image/png">
                 </div>
                 <i class="fas fa-user-circle"></i>
