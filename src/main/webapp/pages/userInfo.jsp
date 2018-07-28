@@ -9,20 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>User details</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/script/script.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/style/style.css">
-</head>
 <body>
-<script>
-    <c:if test="${message != null}">
-        alert(${message});
-    </c:if>
-</script>
 <header>
     <div class="row">
         <div class="logo">Logo</div>
@@ -73,37 +60,47 @@
             <%--Start Content--%>
             <div>
                 <hr>
-                    Avatarka
+                Avatarka
                 <img src="${user.customerDetails.avatar}" width="200px" height="200px">
                 <hr>
-                    Reiting
+                Reiting
                 <br>
-                    Ocenka
+                Ocenka
                 <br>
                 <hr>
-                    Ocenki
+                Ocenki
                 <hr>
-                    Recenzii
+                Recenzii
                 <hr>
                 <sec:authorize access="isAuthenticated()">
                     <sec:authentication property="principal.id" var="principalId"/>
                     <c:if test="${userID == principalId}">
                         <h4>Navigation</h4>
-                        <div>
-                                <form action="/changePassword" method="post">
-                                    <input type="password" name="oldPassword" placeholder="OLD PASSWORD">
-                                    <input type="password" name="newPassword" placeholder="NEW PASSWORD">
-                                    <input type="hidden" name="userId" value="${principalId}">
-                                    <input type="hidden"
-                                           name="${_csrf.parameterName}"
-                                           value="${_csrf.token}">
-                                    <input type="submit">
+                        <h6>${message}</h6>
+                        <div class = "changePassword">
+                            <form action="/user/${userId}" method="post">
+                                <input type="password" name="oldPassword" placeholder="OLD PASSWORD">
+                                <input type="password" name="newPassword" placeholder="NEW PASSWORD">
+                                <input type="hidden" name="userPrincipalId" value="${principalId}">
+                                <input type="hidden"
+                                       name="${_csrf.parameterName}"
+                                       value="${_csrf.token}">
+                                <input type="submit">
+                            </form>
+                        </div>
+                        <div class = "changeAvatar">
+                            <form action="/user/${userId}/changeAvatar" enctype="multipart/form-data" method="post">
+                                <input type="file" name="avatarImg" accept="image/*,image/jpeg,image/png">
+                                <input type="hidden"
+                                       name="${_csrf.parameterName}"
+                                       value="${_csrf.token}">
+                                <input type="submit">
                             </form>
                         </div>
                     </c:if>
                 </sec:authorize>
                 <hr>
-                    Admin Navigation
+                Admin Navigation
             </div>
             <%--End Content--%>
         </div>
@@ -186,5 +183,24 @@
     </div>
 </div>
 
+
+<c:if test="${message eq 'Password changing'}">
+    <script>
+        alert('Password changing');
+    </script>
+</c:if>
+<c:if test="${message eq 'Old password wrong'}">
+    <script>
+        alert('Old password wrong');
+    </script>
+</c:if>
 </body>
+<head>
+    <meta charset="UTF-8">
+    <title>User details</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/script/script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+</head>
 </html>
