@@ -89,9 +89,20 @@ public class AdministrationController {
                 customerDetailsService.updateAvatar(
                         customerDAO.findCustomerById(userId).getCustomerDetails(),
                         file);
-
         customerDetailsService.save(customerDetails);
-
+        return "redirect:/user/"+userId;
+    }
+    @RequestMapping(value = "/user/{userId}/changeNameAndBirthday", method = RequestMethod.POST)
+    public String changeNameAndBirthday(
+            @PathVariable int userId,
+            @RequestParam("name") String name,
+            @RequestParam("birthday") String birthday,
+            Model model
+    ){
+        CustomerDetails customerDetails = customerDAO.findCustomerById(userId).getCustomerDetails();
+        if(!name.equals("")) customerDetails.setName(name);
+        if(!birthday.equals("")) customerDetails.setBirthday(birthday);
+        customerDetailsService.save(customerDetails);
 
         return "redirect:/user/"+userId;
     }

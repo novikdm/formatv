@@ -38,31 +38,6 @@ public class RegistrationAndActivationCustomerController {
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         customerDetails = customerDetailsService.updateAvatar(customerDetails, file);
 
-//        if (file != null){
-//            int prefix = (int) (Math.random() * 10000);
-//            String sufix = "";
-//            char[] fileNameChars = file.getOriginalFilename().toCharArray();
-//            for(int i =fileNameChars.length-1; i>0; i--){
-//                if(fileNameChars[i] != '.'){
-//                    sufix += fileNameChars[i];
-//                }
-//                else {
-//                    sufix += ".";
-//                    break;
-//                }
-//            }
-//            sufix = new StringBuffer(sufix).reverse().toString();
-//            String fileName = new String(prefix + "_" + new Date().getTime()  + sufix);
-//
-//            file.transferTo(new File(
-//                    System.getProperty("user.home")
-//                            + File.separator
-//                            + "avatars"
-//                            + File.separator
-//                            + fileName
-//            ));
-//            customerDetails.setAvatar("/prefixAvatar/"+fileName);
-//        }
         try {
             customer.setActivationLink(customerService.hashLink(customer));
         } catch (NoSuchAlgorithmException e) {

@@ -72,11 +72,12 @@
                 <hr>
                 Recenzii
                 <hr>
+                <div style="background: beige">
                 <sec:authorize access="isAuthenticated()">
                     <sec:authentication property="principal.id" var="principalId"/>
                     <c:if test="${userID == principalId}">
-                        <h4>Navigation</h4>
-                        <h6>${message}</h6>
+                        <h4>User administration Panel</h4>
+                        <h6>Change Password</h6>
                         <div class = "changePassword">
                             <form action="/user/${userId}" method="post">
                                 <input type="password" name="oldPassword" placeholder="OLD PASSWORD">
@@ -88,8 +89,21 @@
                                 <input type="submit">
                             </form>
                         </div>
+                        <h6>Change Name and Birthday</h6>
+                        <div class = "changeNameAndBirthday">
+                            <form action="/user/${userId}/changeNameAndBirthday" method="post">
+                                <input type="text" name="name" placeholder="Name">
+                                <input type="date" name="birthday" placeholder="Birthday">
+                                <input type="hidden"
+                                       name="${_csrf.parameterName}"
+                                       value="${_csrf.token}">
+                                <input type="submit">
+                            </form>
+                        </div>
+                        <h6>Change Avatar</h6>
                         <div class = "changeAvatar">
                             <form action="/user/${userId}/changeAvatar" enctype="multipart/form-data" method="post">
+                                <label>Change Avatar</label>
                                 <input type="file" name="avatarImg" accept="image/*,image/jpeg,image/png">
                                 <input type="hidden"
                                        name="${_csrf.parameterName}"
@@ -100,6 +114,7 @@
                     </c:if>
                 </sec:authorize>
                 <hr>
+                </div>
                 Admin Navigation
             </div>
             <%--End Content--%>
